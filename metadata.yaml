@@ -1,6 +1,6 @@
-name: helloworld # 插件唯一识别名，以 astrbot_plugin_ 前缀开头
-display_name: helloworld # 用于展示的名字，可以是方便人类阅读的名字（需要版本 >= v4.5.0，低版本不会报错，请放心填写）
-desc: AstrBot 插件示例。 # 插件简短描述
-version: v1.3.0 # 插件版本号。格式：v1.1.1 或者 v1.1
-author: Soulter # 作者
-repo: https://github.com/Soulter/helloworld # 插件的仓库地址
+name: astrbot_plugin_workflow # 插件唯一识别名，以 astrbot_plugin_ 前缀开头
+display_name: 可配置自动化插件 # 用于展示的名字，可以是方便人类阅读的名字（需要版本 >= v4.5.0，低版本不会报错，请放心填写）
+desc: 一个通用的QQ群自动化工作流引擎插件，通过WebUI配置即可实现复杂的多轮对话和自动化流程。内置B站验证、关键词过滤等常用模板，支持外部脚本调用和自定义扩展。采用分层架构设计，具备完整的异常处理、日志系统和资源管理机制。 
+version: v0.1.0 # 插件版本号。格式：v1.1.1 或者 v1.1
+author: lovely-winter # 作者
+repo: https://github.com/Lovely-winter/astrbot_plugin_workflow # 插件的仓库地址

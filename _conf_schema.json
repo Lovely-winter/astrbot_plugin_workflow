@@ -1,0 +1,14 @@
+内容：
+- workflows: template_list类型
+  - bilibili_verify模板：trigger_command, audit_group, formal_group, min_followers, timeout, verify_method等
+  - keyword_filter模板：keywords, action_type, mute_duration, kick_permanently等
+  - github_verify模板：min_stars, min_followers等
+  - custom_approval模板：fields, approval_mode等
+- blacklist: list类型，全局黑名单
+- global_settings: object类型
+  - enable_logging: bool
+  - log_level: string (DEBUG/INFO/WARNING/ERROR)
+  - max_concurrent_workflows: int
+  - cleanup_interval_minutes: int
+  - rate_limit_per_user: int
+每个字段包含：type, description, hint, default, options（可选）

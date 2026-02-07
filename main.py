@@ -1,29 +1,11 @@
-from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
-from astrbot.api.star import Context, Star, register
-from astrbot.api import logger
-
-@register(
-    "verifygate",  # 改成你的插件名
-    "YourName",    # 改成你的名字/团队名
-    "QQ群智能准入系统，双群审核+校验码验证",
-    "0.1.0"        # 初始版本用0.1.0
-)
-class MyPlugin(Star):
-    def __init__(self, context: Context):
-        super().__init__(context)
-
-    async def initialize(self):
-        """可选择实现异步的插件初始化方法，当实例化该插件类之后会自动调用该方法。"""
-
-    # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
-    @filter.command("helloworld")
-    async def helloworld(self, event: AstrMessageEvent):
-        """这是一个 hello world 指令""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        user_name = event.get_sender_name()
-        message_str = event.message_str # 用户发的纯文本消息字符串
-        message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
-        logger.info(message_chain)
-        yield event.plain_result(f"Hello, {user_name}, 你发了 {message_str}!") # 发送一条纯文本消息
-
-    async def terminate(self):
-        """可选择实现异步的插件销毁方法，当插件被卸载/停用时会调用。"""
+内容：
+- WorkflowPlugin类，注册到AstrBot
+- __init__：加载配置、初始化日志、创建workflow实例、注册触发器、启动清理任务
+- _load_workflows()：解析config["workflows"]，根据template_key创建实例
+- _register_triggers()：为每个workflow动态注册@filter.command
+- _setup_logging()：配置日志系统（级别、格式、文件）
+- _start_cleanup_task()：启动定时清理（清理过期会话、校验码、日志轮转）
+- _validate_global_config()：验证全局配置合法性
+异常处理：捕获配置加载失败、workflow创建失败，记录ERROR日志后优雅降级
+请按照C:\Users\sky-winter\Desktop\program\astrbot_plugin\astrbot_plugin_workflow\doc\simple.md
+这个文件中的格式生成代码

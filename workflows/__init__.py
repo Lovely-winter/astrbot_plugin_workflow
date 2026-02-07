@@ -1,0 +1,7 @@
+内容：
+自动导入所有workflow并注册到registry
+from .bilibili_verify import BilibiliVerifyWorkflow
+from .keyword_filter import KeywordFilterWorkflow
+from .github_verify import GitHubVerifyWorkflow
+from .custom_approval import CustomApprovalWorkflow
+确保在main.py加载前完成注册

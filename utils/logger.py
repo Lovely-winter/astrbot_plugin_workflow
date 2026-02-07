@@ -1,0 +1,11 @@
+内容：
+- setup_logger(name, level, log_file, format)：配置logger
+- StructuredLogger类：结构化日志记录
+  - log_workflow_start(user_id, workflow_name, config)
+  - log_workflow_end(user_id, workflow_name, status, duration)
+  - log_step(user_id, workflow_name, step_name, data)
+  - log_api_call(url, method, status_code, duration)
+  - log_error(error, context, traceback)
+  - log_user_action(user_id, action, details)
+- 日志轮转配置：每天一个文件，保留7天
+- 日志格式：[时间] [级别] [模块] [user_id] 消息
