@@ -2,12 +2,7 @@ from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 
-@register(
-    "verifygate",  # 改成你的插件名
-    "YourName",    # 改成你的名字/团队名
-    "QQ群智能准入系统，双群审核+校验码验证",
-    "0.1.0"        # 初始版本用0.1.0
-)
+@register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
