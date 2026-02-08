@@ -1,9 +1,7 @@
-内容：
-- RateLimiter类
-  - __init__(limit, window)：限制、时间窗口
-  - check(key)：检查是否超限
-  - record(key)：记录一次请求
-  - cleanup()：清理过期记录
-  - get_remaining(key)：获取剩余配额
-用于防止用户刷请求、API调用限流
-异常处理：超限时抛出RateLimitError
+实现频率限制器类。
+
+基于滑动窗口算法，维护用户请求时间戳列表。
+
+check 方法：检查用户是否超过频率限制，移除过期记录，判断当前请求数是否超限。
+
+超限返回 False，否则记录时间戳返回 True。

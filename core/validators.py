@@ -1,10 +1,10 @@
-内容：
-- validate_qq(qq_str)：QQ号格式验证（5-11位数字）
-- validate_uid(uid_str)：通用UID验证（纯数字）
-- validate_email(email)：邮箱格式验证
-- validate_url(url)：URL格式验证
-- validate_positive_int(value, name)：验证正整数
-- validate_config_schema(config, required_fields)：配置完整性验证
-- sanitize_input(text, max_length)：输入清理、长度限制、转义特殊字符
-- validate_group_permission(event, required_role)：验证用户群权限
-异常处理：验证失败抛出InvalidInputError，包含具体字段信息
+实现多级验证器函数。
+
+Schema 验证：使用 jsonschema 验证 JSON 格式，检查必填字段和类型。
+
+业务验证：检查 action_id 存在性、next 索引合法性、循环依赖（拓扑排序）。
+返回错误列表而非抛异常。
+
+运行时验证：参数类型转换、必填参数检查、返回转换后的参数字典。
+
+循环依赖检测使用图算法（DFS 或拓扑排序）。

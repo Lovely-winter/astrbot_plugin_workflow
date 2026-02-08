@@ -1,8 +1,9 @@
-内容：
-- SendMessageAction：发送消息
-- SendPrivateMessageAction：发送私聊
-- SendGroupMessageAction：发送群消息
-- WaitInputAction：等待用户输入（封装session_waiter模式）
-- ApproveRequestAction：同意入群申请
-- RejectRequestAction：拒绝申请
-异常处理：消息发送失败记录WARNING，不抛异常（消息发送是尽力而为）
+实现消息相关 action 类。
+
+SendMessageAction：发送文本消息，参数为 text，调用 event.send 发送。
+
+WaitInputAction：标记等待用户输入，参数为 timeout，实际等待逻辑在工厂的 session_handler 中。
+
+SendImageAction：发送图片消息，参数为 url，调用 event.image_result 发送。
+
+使用装饰器自动注册到 ACTION_REGISTRY。

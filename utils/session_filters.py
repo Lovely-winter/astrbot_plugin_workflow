@@ -1,5 +1,7 @@
-内容：
-- GroupSessionFilter：按群隔离会话（返回group_id）
-- GroupUserSessionFilter：群+用户复合隔离（返回f"{group_id}_{user_id}"）
-- GlobalSessionFilter：全局单例（返回固定字符串）
-- CustomSessionFilter：自定义规则基类
+实现会话 ID 生成策略类，继承 SessionFilter。
+
+WorkflowSessionFilter：每个 workflow 生成独立会话空间，session_id 格式为 workflow_id + sender_id。
+
+GroupSessionFilter：整个群作为一个会话，session_id 包含 group_id。
+
+CustomSessionFilter：根据策略参数（per_user、per_group、global）生成不同粒度的 session_id。

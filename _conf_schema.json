@@ -1,14 +1,11 @@
-内容：
-- workflows: template_list类型
-  - bilibili_verify模板：trigger_command, audit_group, formal_group, min_followers, timeout, verify_method等
-  - keyword_filter模板：keywords, action_type, mute_duration, kick_permanently等
-  - github_verify模板：min_stars, min_followers等
-  - custom_approval模板：fields, approval_mode等
-- blacklist: list类型，全局黑名单
-- global_settings: object类型
-  - enable_logging: bool
-  - log_level: string (DEBUG/INFO/WARNING/ERROR)
-  - max_concurrent_workflows: int
-  - cleanup_interval_minutes: int
-  - rate_limit_per_user: int
-每个字段包含：type, description, hint, default, options（可选）
+定义插件配置结构。
+
+workflow_templates 字段使用 template_list 类型，包含一个模板：
+- enabled: 布尔值，是否启用
+- name: 字符串，模板名称
+- description: 文本，备注说明
+- config_code: 文本，启用代码编辑器，语言为 JSON
+
+debug_mode 字段控制全局调试开关。
+
+提示中说明使用 GitHub Pages 可视化工具生成 JSON 的流程。

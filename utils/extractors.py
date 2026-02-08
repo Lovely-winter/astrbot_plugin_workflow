@@ -1,8 +1,9 @@
-内容：
-- extract_uid(text)：正则提取UID（支持多种格式）
-- extract_email(text)：提取邮箱
-- extract_url(text)：提取URL
-- extract_qq(text)：提取QQ号
-- extract_image_url(event)：从消息链提取图片URL
-- parse_command_args(message_str)：解析指令参数
-异常处理：提取失败返回None，不抛异常
+实现参数提取和插值解析工具。
+
+extract_params_from_message：使用正则从消息中提取参数，支持命名组。
+
+resolve_template_string：替换 {variable} 为实际值，支持点号访问、默认值、转义。
+
+resolve_params：递归处理字典、列表、字符串，调用模板字符串解析。
+
+找不到变量时使用默认值或保留原样，不抛异常。

@@ -1,12 +1,9 @@
-内容：
-- SessionContext类：会话上下文数据结构
-  - workflow_name, user_id, group_id, step_index, data, created_at, last_active_at
-- SessionManager类（单例）
-  - _sessions = {}：user_id -> SessionContext映射
-  - create_session(user_id, workflow_name)：创建会话
-  - get_session(user_id)：获取会话
-  - update_session(user_id, data)：更新会话数据
-  - close_session(user_id)：关闭会话
-  - get_active_sessions()：获取所有活跃会话（用于统计）
-  - cleanup_expired(timeout)：清理过期会话
-异常处理：会话不存在时返回None而非抛异常，由调用者判断
+实现会话管理器。
+
+维护会话字典和锁字典，管理并发会话。
+
+提供方法：创建会话（生成唯一 session_id）、获取会话、清理单个或所有会话。
+
+启动后台任务定期清理超时会话（协程间隔检查）。
+
+提供查询活跃会话列表的方法，返回 workflow_id、user_id、开始时间等信息。

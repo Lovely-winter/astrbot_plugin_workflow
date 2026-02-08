@@ -1,11 +1,11 @@
-内容：
-- WorkflowPlugin类，注册到AstrBot
-- __init__：加载配置、初始化日志、创建workflow实例、注册触发器、启动清理任务
-- _load_workflows()：解析config["workflows"]，根据template_key创建实例
-- _register_triggers()：为每个workflow动态注册@filter.command
-- _setup_logging()：配置日志系统（级别、格式、文件）
-- _start_cleanup_task()：启动定时清理（清理过期会话、校验码、日志轮转）
-- _validate_global_config()：验证全局配置合法性
-异常处理：捕获配置加载失败、workflow创建失败，记录ERROR日志后优雅降级
-请按照C:\Users\sky-winter\Desktop\program\astrbot_plugin\astrbot_plugin_workflow\doc\simple.md
-这个文件中的格式生成代码
+实现插件入口类 WorkflowPlugin，继承 Star。
+
+初始化方法：读取 workflow_templates 配置，解析每个模板的 config_code（JSON），
+调用工厂创建 handler，动态注册到插件实例。配置错误时回退到空配置不中断加载。
+
+terminate 方法：清理所有会话和资源。
+
+管理指令：reload（重载配置）、status（显示状态统计）、debug（切换调试）、
+diagnose（诊断配置问题）、metrics（显示执行指标）、sessions（查看活跃会话）。
+
+所有异常捕获并返回友好错误消息。

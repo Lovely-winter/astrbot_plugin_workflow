@@ -1,7 +1,8 @@
-内容：
-测试所有验证器
-- test_validate_qq()：各种QQ号格式
-- test_validate_uid()：UID验证
-- test_validate_email()：邮箱验证
-- test_sanitize_input()：输入清理
-边界测试：空字符串、超长、特殊字符、SQL注入
+编写验证器的单元测试。
+
+测试 Schema 验证：有效配置应通过，缺少必填字段应抛异常，类型错误应抛异常。
+
+测试业务验证：action_id 不存在应返回错误，next 索引越界应返回错误，
+循环依赖应被检测。
+
+测试运行时验证：参数类型转换是否正确，必填参数缺失应抛异常。

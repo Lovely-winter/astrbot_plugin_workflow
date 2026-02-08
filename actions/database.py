@@ -1,9 +1,7 @@
-内容：
-- SaveKVDataAction：保存KV数据（plugin.put_kv_data）
-- QueryKVDataAction：查询KV数据
-- DeleteKVDataAction：删除KV数据
-- CheckBlacklistAction：检查用户是否在黑名单
-- AddBlacklistAction：添加到黑名单
-- RemoveBlacklistAction：从黑名单移除
-- SaveToSQLiteAction：保存到SQLite（可选，用于复杂查询）
-异常处理：数据库操作失败抛出ActionExecutionError，不自动重试
+实现数据库操作 action。
+
+SaveToDbAction：保存数据到数据库或 KV 存储，参数为 table 和 data。
+
+QueryDbAction：查询数据库，参数为 table 和 condition，结果存入上下文变量。
+
+根据需求可集成 SQLAlchemy 或使用 AstrBot 提供的存储接口。

@@ -1,7 +1,10 @@
-内容：
-集成测试，Mock event对象
-- test_bilibili_verify_success()：成功流程
-- test_bilibili_verify_timeout()：超时场景
-- test_bilibili_verify_blacklist()：黑名单拦截
-- test_keyword_filter()：关键词匹配
-模拟完整的用户交互流程
+编写完整工作流的集成测试。
+
+测试配置解析：有效配置能成功解析为 WorkflowDefinition 对象。
+
+测试 handler 创建：工厂能正确创建 handler 函数并应用装饰器。
+
+测试执行流程：模拟消息事件触发 handler，验证 action 按序执行，
+验证会话控制正常工作。
+
+测试错误处理：配置错误、执行错误、超时等异常能被正确捕获和处理。

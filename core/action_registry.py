@@ -1,8 +1,8 @@
-内容：
-- ActionRegistry单例类
-  - _actions = {}：action_type -> ActionClass映射
-  - register(action_type)：装饰器注册动作
-  - execute(action_type, params, context)：执行指定动作
-  - get_action_list()：返回所有可用动作列表
-  - validate_action(action_type)：检查动作是否存在
-异常处理：execute时捕获动作执行失败，抛出ActionExecutionError并记录详细日志
+实现全局 action 注册表。
+
+提供注册表字典和装饰器函数。装饰器将 action 类注册到字典中。
+
+提供辅助函数：获取 action 类（不存在抛异常）、列出所有 action_id、
+验证 action_id 有效性。
+
+配合 actions/__init__.py 实现自动注册机制。
