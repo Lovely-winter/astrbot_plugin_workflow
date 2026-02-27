@@ -1,3 +1,3 @@
-内容：
-aiohttp>=3.8.0
-不需要额外依赖，AstrBot自带的库已足够
+# 工作流插件依赖库
+aiohttp>=3.9.0
+jsonschema>=4.0.0
